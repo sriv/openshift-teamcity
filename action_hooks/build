@@ -1,0 +1,34 @@
+#!/bin/bash
+# This is a simple build script and will be executed on your CI system if 
+# available.  Otherwise it will execute while your application is stopped
+# before the deploy step.  This script gets executed directly, so it
+# could be python, php, ruby, etc.
+
+BUILD_DIR=${OPENSHIFT_TMP_DIR}/${OPENSHIFT_APP_UUID}/build
+
+INSTALL_DIR=${OPENSHIFT_HOMEDIR}/app-root/runtime
+
+TEAMCITY_VERSION="8.0.5"
+TEAMCITY_NAME="TeamCity-${TEAMCITY_VERSION}"
+TEAMCITY_URL="http://download.jetbrains.com/teamcity/${TEAMCITY_NAME}.tar.gz"
+
+function build_teamcity()
+{
+	cd ${INSTALL_DIR}
+	wget ${TEAMCITY_URL}
+	tar xvf ${TEAMCITY_NAME}.tar.gz
+	mv ${TEAMCITY_NAME} teamcity
+
+	mkdir -p ${INSTALL_DIR}/teamcity/run/
+
+	rm ${TEAMCITY_NAME=}.tar.gz
+}
+
+function check_and_install_teamcity()
+{
+	if [[ ! -e ${INSTALL_DIR}/teamcity/bin/runAll.sh ]]; then
+		build_teamcity
+	fi
+}
+
+check_and_install_teamcity
