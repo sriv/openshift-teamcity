@@ -4,7 +4,7 @@
 # before the deploy step.  This script gets executed directly, so it
 # could be python, php, ruby, etc.
 
-INSTALL_DIR=${OPENSHIFT_HOMEDIR}/app-root/runtime
+INSTALL_DIR=${OPENSHIFT_HOMEDIR}app-root/runtime
 
 TEAMCITY_VERSION="8.0.5"
 TEAMCITY_NAME="TeamCity-${TEAMCITY_VERSION}"
@@ -25,7 +25,10 @@ function build_teamcity()
 function check_and_install_teamcity()
 {
 	if [[ ! -e ${INSTALL_DIR}/teamcity/bin/runAll.sh ]]; then
+		echo "setting up teamcity"
 		build_teamcity
+	else
+		echo "An installation already exists. Delete and recreate the application."
 	fi
 }
 

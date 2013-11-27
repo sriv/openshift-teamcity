@@ -3,8 +3,7 @@
 # script. The application will work only if it binds to
 # $OPENSHIFT_INTERNAL_IP:8080
 
-TEMPLATES_DIR=${OPENSHIFT_REPO_DIR}/.openshift/templates
-INSTALL_DIR=${OPENSHIFT_HOMEDIR}/app-root/runtime
+INSTALL_DIR=${OPENSHIFT_HOMEDIR}app-root/runtime
 
 echo "Starting teamcity."
 nohup ${INSTALL_DIR}/teamcity/bin/runAll.sh -p ${INSTALL_DIR}/teamcity/run/teamcity.pid
