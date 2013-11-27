@@ -13,13 +13,13 @@ TEAMCITY_URL="http://download.jetbrains.com/teamcity/${TEAMCITY_NAME}.tar.gz"
 function build_teamcity()
 {
 	cd ${INSTALL_DIR}
+	echo "Downloading ${TEAMCITY_NAME} from ${TEAMCITY_URL}"
 	wget ${TEAMCITY_URL}
 	tar xvf ${TEAMCITY_NAME}.tar.gz
-	mv ${TEAMCITY_NAME} teamcity
 
 	mkdir -p ${INSTALL_DIR}/teamcity/run/
 
-	rm ${TEAMCITY_NAME=}.tar.gz
+	rm ${TEAMCITY_NAME}.tar.gz
 }
 
 function check_and_install_teamcity()
