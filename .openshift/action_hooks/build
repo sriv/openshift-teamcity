@@ -4,8 +4,6 @@
 # before the deploy step.  This script gets executed directly, so it
 # could be python, php, ruby, etc.
 
-BUILD_DIR=${OPENSHIFT_TMP_DIR}/${OPENSHIFT_APP_UUID}/build
-
 INSTALL_DIR=${OPENSHIFT_HOMEDIR}/app-root/runtime
 
 TEAMCITY_VERSION="8.0.5"
