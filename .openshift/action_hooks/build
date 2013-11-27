@@ -15,7 +15,7 @@ function build_teamcity()
 	cd ${INSTALL_DIR}
 	echo "Downloading ${TEAMCITY_NAME} from ${TEAMCITY_URL}"
 	wget ${TEAMCITY_URL}
-	tar xvf ${TEAMCITY_NAME}.tar.gz
+	tar xf ${TEAMCITY_NAME}.tar.gz
 
 	mkdir -p ${INSTALL_DIR}/teamcity/run/
 
