@@ -5,6 +5,6 @@ INSTALL_DIR=${OPENSHIFT_HOMEDIR}app-root/runtime
 
 echo "Stopping teamcity."
 ${INSTALL_DIR}/TeamCity/bin/runAll.sh stop
-kill -QUIT `cat ${INSTALL_DIR}/teamcity/run/teamcity.pid`
+kill -QUIT `cat ${INSTALL_DIR}/TeamCity/run/teamcity.pid`
 
 exit 0

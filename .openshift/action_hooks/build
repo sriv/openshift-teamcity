@@ -4,6 +4,7 @@
 # before the deploy step.  This script gets executed directly, so it
 # could be python, php, ruby, etc.
 
+TEMPLATES_DIR=${OPENSHIFT_REPO_DIR}/.openshift/templates
 INSTALL_DIR=${OPENSHIFT_HOMEDIR}app-root/runtime
 
 TEAMCITY_VERSION="8.0.5"
@@ -17,7 +18,10 @@ function build_teamcity()
 	wget -q ${TEAMCITY_URL}
 	tar xf ${TEAMCITY_NAME}.tar.gz
 
-	mkdir -p ${INSTALL_DIR}/teamcity/run/
+	rm ${INSTALL_DIR}/TeamCity/conf/server.xml
+	erb ${TEMPLATES_DIR}/server.xml.erb > ${INSTALL_DIR}/TeamCity/conf/server.xml
+
+	mkdir -p ${INSTALL_DIR}/TeamCity/run/
 
 	rm ${TEAMCITY_NAME}.tar.gz
 }
