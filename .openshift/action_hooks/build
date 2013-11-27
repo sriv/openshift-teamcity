@@ -14,7 +14,7 @@ function build_teamcity()
 {
 	cd ${INSTALL_DIR}
 	echo "Downloading ${TEAMCITY_NAME} from ${TEAMCITY_URL}"
-	wget ${TEAMCITY_URL}
+	wget -quiet ${TEAMCITY_URL}
 	tar xf ${TEAMCITY_NAME}.tar.gz
 
 	mkdir -p ${INSTALL_DIR}/teamcity/run/
@@ -24,7 +24,7 @@ function build_teamcity()
 
 function check_and_install_teamcity()
 {
-	if [[ ! -e ${INSTALL_DIR}/teamcity/bin/runAll.sh ]]; then
+	if [[ ! -e ${INSTALL_DIR}/Teamcity/bin/runAll.sh ]]; then
 		echo "setting up teamcity"
 		build_teamcity
 	else
