@@ -6,4 +6,4 @@
 INSTALL_DIR=${OPENSHIFT_HOMEDIR}app-root/runtime
 
 echo "Starting teamcity."
-nohup ${INSTALL_DIR}/teamcity/bin/runAll.sh -p ${INSTALL_DIR}/teamcity/run/teamcity.pid
+nohup ${INSTALL_DIR}/Teamcity/bin/runAll.sh -p ${INSTALL_DIR}/teamcity/run/teamcity.pid
